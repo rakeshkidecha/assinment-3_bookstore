@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RK book store</title>
+    <!-- remixicon -->
+    <link rel="stylesheet" href="/remix/remixicon.css" type="text/css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <header class="py-2 position-fixed w-100 z-2">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <a href="/">
+                        <img src="/images/logo.png" alt="logo" title="logo" width="100px"/>
+                    </a>
+                </div>
+                <nav class="d-flex align-items-center">
+                    <a href="javscript:void(0)" class="nav-link mx-2">Home</a>
+                    <a href="javscript:void(0)" class="nav-link mx-2">About</a>
+                    <a href="javscript:void(0)" class="nav-link mx-2"><i class="ri-shopping-cart-2-line p-2 text-white rounded-2 "></i></a>
+                    <a href="javscript:void(0)" id="toggle" class="nav-link mx-2"><i class="ri-add-large-fill p-2 text-white rounded-2 "></i></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- sidebar  -->
+    <aside id="aside" class="position-fixed end-0">
+        <form method="post" action="/insertBook" enctype="multipart/form-data">
+            <label class="mb-1 mt-3">Title:- </label>
+            <input type="text" name="title" class="form-control"/>
+
+            <label class="mb-1 mt-3">Author:- </label>
+            <input type="text" name="author" class="form-control" />
+
+            <label class="mb-1 mt-3">Price:- </label>
+            <input type="number" name="price" class="form-control" />
+
+            <label class="mb-1 mt-3">Stock:- </label>
+            <input type="number" name="stock" class="form-control" />
+
+            <label class="mb-1 mt-3">Genre:- </label>
+            <% let genreNames = ["Fantasy","Romance","Horror","Historical","Thriller","Adventure"] %>
+            <div class="row">
+                <% genreNames.map((item)=>{ %>
+                    <div class="col-4">
+                        <input type="checkbox" name="genre" value="<%= item %>" /><span class="ms-2"><%= item %></span>
+                    </div>
+                <% }) %>
+            </div>
+
+            <label class="mb-1 mt-3 me-2">Rating:- </label>
+            <% for(let i=1;i<=5;i++){ %>
+                <input type="radio" name="rating" value="<%= i %>" /><span class="me-3 ms-1"><%= i %></span>
+            <% } %>
+
+            <div>
+                <label class="mb-1 mt-3">PublishedDate:- </label>
+                <input type="date" name="publishedDate" style="font-size: 14px;"/>
+            </div>
+
+            <label class="mb-1 mt-3">Publisher:- </label>
+            <input type="text" name="publisher" class="form-control" />
+
+            <div class="d-flex mb-1 mt-3  align-items-center text-nowarp">
+                <label class="text-nowarp d-inline-block me-2">Cover Image:- </label>
+                <input type="file" name="coverImage" style="font-size: 12px;"/>
+            </div>
+
+            <label class="mb-1 mt-3">Decsription:- </label>
+            <textarea name="decsription" class="form-control" ></textarea>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn text-white ">add</button>
+            </div>
+
+        </form>
+    </aside>
+
+    <!-- views -->
+    <main id="main">
+        <div class="container">
+            <h2 class="text-center pt-4">New Published books</h2>
+            <div class="row py-4 g-4">
+                <% allBooks.map((item)=>{ %>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="p-3">
+                                <img src="<%= item.coverImage %>" alt="coverImage" title="coverImage" width="100%" class="img-fluid">
+                            </div>
+                            <div class="card-body">
+                                <h4><%= item.title %></h4>
+                                <p><b><%= item.price %></b> ₹</p>
+                                <p>
+                                    <%= item.rating %>
+                                    <% for(let i=1;i<=item.rating ;i++){ %>
+                                        <i class="ri-star-s-fill"></i>
+                                    <% } %>
+                                </p>
+                                <a href="/singleBook/<%= item.id %>" class="btn text-white w-100"> More detais </a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- custom js  -->
+    <script src="/js/script.js" type="text/javascript"></script>
+    <!-- bootstrap js  -->
+    <script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

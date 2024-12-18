@@ -1,0 +1,81 @@
+header{
+    background-color: #F7F7F7;
+}
+aside{
+    width: 410px;
+    top: 72px;
+    height: 100vh;
+    overflow: scroll;
+    padding: 20px 20px 100px 20px;
+    transform: translateX(100%);
+    transition: all 0.3s linear;
+}
+.active_aside{
+    transform: translateX(0%);
+}
+main{
+    padding-top:72px ;
+    width: 100% ;
+    background-color: rgb(233, 237, 238);
+    transition: all 0.3s linear;
+}
+.active_main{
+    width: calc(100% - 400px);
+}
+nav a{
+    transition: all 0.3s linear;
+}
+nav a:hover{
+    color: #127595 !important;
+}
+nav a i{
+    background-color: #127595;
+    transition: all 0.3s linear;
+}
+nav a i:hover{
+    background-color: #0a4c62;
+}
+form label{
+    font-size: 15px;
+}
+form input{
+    padding: 4px 10px !important;
+}
+.btn{
+    background-color: #127595;
+    transition: all 0.2s linear;
+}
+.btn:hover{
+    background-color: #0a4c62;
+}
+.card{
+    transition: all 0.2s linear;
+}
+.card img{
+    height: 300px;
+    object-fit: contain;
+}
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card-body p ,.book-details p {
+    margin: 10px 0 !important;
+}
+.singleBook{
+    border: 2px solid #0a4c62;
+}
+.author-name{
+    color: #127595;
+}
+.back-to-home{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #127595;
+    font-size: 14px;
+    top: 54px;
+    left: 44px;
+}
+.ri-star-s-fill{
+    color: orangered;
+}
